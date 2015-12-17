@@ -1,0 +1,15 @@
+1 #include <iostream>
+ 2 #include "Robot.h"
+ 3 
+ 4 int main(){
+ 5     Point one(5,20),two(0,30),three(0,20),a(0,0),c(10,0),d(5,0),e(10,0);
+ 6     Robot MyRobot(10,20);
+ 7     WorldFrame wframe(a,0);
+ 8     JointFrame jframe1(a,0);
+ 9     JointFrame jframe2(c,0);
+10     TaskFrame tframe1(d,0);
+11     TaskFrame tframe2(e,90);
+12     MyRobot.PTPmove(tframe1,one);
+13     MyRobot.PTPmove(wframe,two);
+14     MyRobot.PTPmove(jframe1,three);
+15 }

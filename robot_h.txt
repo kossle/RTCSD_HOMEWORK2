@@ -1,0 +1,26 @@
+ 1 #ifndef _ROBOT_H_
+ 2 #define _ROBOT_H_ 
+ 3 #include"Solver.h"
+ 4 //#include"Frame.h"
+ 5 #include <vector>
+ 6 
+ 7 class Robot{
+ 8     private:
+ 9         double JointAngle1,JointAngle2,L1,L2;
+10         Point InsightPoint;
+11         WorldFrame WF0;
+12         JointFrame JF0;
+13         TaskFrame  TF0;
+14         Solver solver;
+15         std::vector<TaskFrame> TaskFrameVec;
+16     public:
+17         Robot(double length1,double length2){
+18             L1=length1;L2=length2;
+19         }
+20         void PTPmove(WorldFrame f,Point p);
+21         void PTPmove(JointFrame f,Point p);
+22         void PTPmove(TaskFrame f,Point p);
+23         void addTFrame(TaskFrame frame);
+24         void deleteFrame();
+25     };
+26 #endif

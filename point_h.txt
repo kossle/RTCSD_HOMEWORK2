@@ -1,0 +1,13 @@
+ 1   #ifndef _POINT_H_
+ 2   #define _POINT_H_
+ 3   
+ 4  class Point{
+ 5   public:
+ 6       double x;
+ 7       double y;
+ 8   public:    
+ 9      Point(double a=0,double b=0);
+10      void updatePoint(double a,double b); 
+11  };
+12  
+13  #endif

@@ -1,0 +1,28 @@
+ 1  #include"Frame.h"
+ 2  
+ 3  Point Frame::To_WF(Point twpoint){
+ 4       Matrix2d RotateMatrix;
+ 5       double OrigialAngal0=OrigialAngal/180*M_PI;
+ 6       Point wfpoint; 
+ 7       RotateMatrix<< cos(OrigialAngal0),sin(OrigialAngal0),
+ 8             -sin(OrigialAngal0),cos(OrigialAngal0);
+ 9       Vector2d v1(twpoint.x,twpoint.y),v2(OrigialPoint.x,OrigialPoint.y),v3;
+10       v3=RotateMatrix*v1+v2;
+11       wfpoint.updatePoint(v3(0),v3(1));
+12       return wfpoint;
+13  }
+14  
+15  WorldFrame::WorldFrame(Point OrigialPoint0,double OrigialAngal0):Frame(OrigialPoint0,OrigialAngal0){
+16              this->OrigialPoint=OrigialPoint0;
+17              this->OrigialAngal=OrigialAngal0;
+18          }
+19          
+20 JointFrame::JointFrame(Point OrigialPoint0,double OrigialAngal0):Frame(OrigialPoint0,OrigialAngal0){
+21              this->OrigialPoint=OrigialPoint0;
+22              this->OrigialAngal=OrigialAngal0;
+23          }
+24         
+25 TaskFrame::TaskFrame(Point OrigialPoint0,double OrigialAngal0):Frame(OrigialPoint0,OrigialAngal0){
+26              this->OrigialPoint=OrigialPoint0;
+27              this->OrigialAngal=OrigialAngal0;
+28          }

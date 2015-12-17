@@ -1,0 +1,19 @@
+ 1 #ifndef _SOLVER_H_
+ 2 #define _SOLVER_H_ 
+ 3 #include<math.h>
+ 4 #include"Point.h"
+ 5 #include"Frame.h"
+ 6 
+ 7 class Solver{
+ 8     private:
+ 9         Point SolverResult;
+10     public:
+11         Solver();
+12         Point PositiveKinematics(double L1,double L2,Point Angles);
+13         Point NegativeKinematics(double L1,double L2,Point point);
+14         Point FrameToWF(WorldFrame frame,Point AimPoint);
+15         Point FrameToWF(JointFrame frame,Point AimPoint);
+16         Point FrameToWF(TaskFrame frame,Point AimPoint);
+17         
+18     };
+19 #endif

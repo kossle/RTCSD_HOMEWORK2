@@ -1,0 +1,12 @@
+ 1 #include"Point.h" 
+ 2   #include<iostream>
+ 3   
+ 4   Point::Point(double a,double b){
+ 5      this->x=a;
+ 6      this->y=b;
+ 7  }
+ 8 
+ 9  void Point::updatePoint(double a,double b){
+10      this->x=a;
+11      this->y=b;    
+12  }

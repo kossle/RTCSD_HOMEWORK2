@@ -1,0 +1,31 @@
+ 1 #include"Solver.h"
+ 2 #include"Point.h"
+ 3 #include<cmath>
+ 4 
+ 5 Solver::Solver(){
+ 6     SolverResult.x=0;
+ 7     SolverResult.y=0;
+ 8 }
+ 9 
+10 Point Solver::NegativeKinematics(double L1,double L2,Point point){
+11     SolverResult.x=0;
+12     SolverResult.y=0;
+13     SolverResult.updatePoint(SolverResult.x,SolverResult.y);
+14     return SolverResult;
+15 }
+16 
+17 Point Solver::PositiveKinematics(double L1,double L2,Point Angles){
+18     SolverResult.x=L1 *cos(Angles.x/180*M_PI)+L2 *cos(Angles.y/180*M_PI);
+19     SolverResult.y=L1 *sin(Angles.x/180*M_PI)+L2 *sin(Angles.y/180*M_PI);
+20     SolverResult.updatePoint(SolverResult.x,SolverResult.y);
+21     return SolverResult;
+22 }
+23 
+24 
+25 
+26 Point Solver::FrameToWF(WorldFrame frame,Point AimPoint){
+27     return frame.To_WF(AimPoint);}
+28 Point Solver::FrameToWF(JointFrame frame,Point AimPoint){
+29     return frame.To_WF(AimPoint);}
+30 Point Solver::FrameToWF(TaskFrame frame,Point AimPoint){
+31     return frame.To_WF(AimPoint);}

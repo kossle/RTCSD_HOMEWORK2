@@ -1,0 +1,45 @@
+ 1 #include<iostream>
+ 2 #include"Robot.h"
+ 3 using namespace std;
+ 4 
+ 5 void Robot::PTPmove( WorldFrame f,Point p){
+ 6     Point WorldframePoint=solver.FrameToWF(f,p);
+ 7     Point AngleMatrix=solver.NegativeKinematics(L1,L2,WorldframePoint);
+ 8     Point PKResult=solver.PositiveKinematics(L1,L2,AngleMatrix);
+ 9     Point WorldframePoint1(0,30);
+10     Point AngleMatrix1=solver.NegativeKinematics(L1,L2,WorldframePoint1);
+11     InsightPoint.updatePoint(PKResult.x,PKResult.y);
+12     cout<<"机械手两关节转角"<<"<"<<AngleMatrix1.x<<","<<AngleMatrix1.y<<">"<<endl;
+13     cout<<"点的位置为"<<"<"<<InsightPoint.x<<"," <<InsightPoint.y<<">"<<endl;
+14     
+15 }
+16 
+17 void Robot::PTPmove(JointFrame f,Point p){
+18     Point WorldframePoint=solver.FrameToWF(f,p);
+19     Point AngleMatrix=solver.NegativeKinematics(L1,L2,WorldframePoint);
+20     Point PKResult=solver.PositiveKinematics(L1,L2,AngleMatrix);
+21     InsightPoint.updatePoint(PKResult.x,PKResult.y);
+22     cout<<"机械手两关节转角"<<"<"<<AngleMatrix.x<<","<<AngleMatrix.y<<">"<<endl;
+23     cout<<"点的位置为"<<"<"<<InsightPoint.x<<"," <<InsightPoint.y<<">"<<endl;
+24 }
+25 
+26 void Robot::PTPmove(TaskFrame f,Point p){
+27     Point WorldframePoint=solver.FrameToWF(f,p);
+28     Point AngleMatrix=solver.NegativeKinematics(L1,L2,WorldframePoint);
+29     Point PKResult=solver.PositiveKinematics(L1,L2,AngleMatrix);
+30     InsightPoint.updatePoint(PKResult.x,PKResult.y);
+31     cout<<"机械手两关节转角"<<"<"<<AngleMatrix.x<<","<<AngleMatrix.y<<">"<<endl;
+32     cout<<"点的位置为"<<"<"<<PKResult.x<<"," <<PKResult.y<<">"<<endl;
+33     
+34 }
+35 
+36 void Robot::addTFrame(TaskFrame frame){
+37     TaskFrameVec.push_back(frame);
+38 }
+39 
+40 void Robot::deleteFrame(){
+41     TaskFrameVec.pop_back();
+42 }
+43 
+44 
+45     

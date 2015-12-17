@@ -1,0 +1,68 @@
+1  #ifndef _FRAME_H_
+ 2  #define _FRAME_H_
+ 3   
+ 4  #include<Eigen/Dense>
+ 5  #include<cmath>
+ 6  #include"Point.h"
+ 7  using namespace Eigen;
+ 8  
+ 9  class Frame{
+10      protected:
+11          Point OrigialPoint,AimPoint;
+12          double OrigialAngal;
+13      public:
+14          Frame(){
+15              OrigialPoint.x=0;OrigialPoint.y=0;OrigialAngal=0.0;
+16          }
+17          Frame(Point OrigialPoint0,double OrigialAngal0=0){
+18              this->OrigialPoint=OrigialPoint0;
+19              this->OrigialAngal=OrigialAngal0;
+20          }
+21          void UpdateMatrix(Point Zero){
+22              AimPoint=Zero;
+23          }
+24          Point To_WF(Point twpoint);
+25  };
+26   
+27   
+28  class WorldFrame:public Frame{
+29      public:
+30          WorldFrame(){
+31              OrigialPoint.x=0;OrigialPoint.y=0;OrigialAngal=0.0;
+32          }
+33          WorldFrame(Point OrigialPoint0,double OrigialAngal0=0);
+34          ~WorldFrame(){
+35          }
+36  
+37  };
+38  
+39  
+40  
+41  class JointFrame:public Frame{
+42          public:
+43          JointFrame(){
+44              OrigialPoint.x=0;OrigialPoint.y=0;OrigialAngal=0.0;
+45          }
+46          JointFrame(Point OrigialPoint0,double OrigialAngal0=0);
+47          ~JointFrame(){
+48          }
+49          
+50 
+51  };
+52  
+53  
+54  
+55  class TaskFrame:public Frame{
+56          public:
+57          TaskFrame(){
+58              OrigialPoint.x=0;OrigialPoint.y=0;OrigialAngal=0.0;
+59          }
+60          TaskFrame(Point OrigialPoint0,double OrigialAngal0=0);
+61          ~TaskFrame(){
+62          }
+63 
+64   
+65  };
+66  
+67  
+68  #endif
